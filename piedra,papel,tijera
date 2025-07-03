@@ -1,0 +1,56 @@
+namespace piedra;
+  
+class Program
+        {
+            static void Main()
+            {
+                string[] opciones = { "piedra", "papel", "tijera" };
+                Random random = new Random();
+                bool jugarOtraVez = true;
+
+                while (jugarOtraVez)
+                {
+                    Console.Clear();
+                    Console.WriteLine("=== JUEGO: PIEDRA, PAPEL O TIJERA ===");
+                    Console.Write("Elige una opción (piedra, papel, tijera): ");
+                    string jugador = Console.ReadLine().ToLower();
+
+                    if (!Array.Exists(opciones, opcion => opcion == jugador))
+                    {
+                        Console.WriteLine("Opción no válida. Intenta de nuevo.");
+                        continue;
+                    }
+
+                    int indiceComputadora = random.Next(0, 3);
+                    string computadora = opciones[indiceComputadora];
+
+                    Console.WriteLine($"La computadora eligió: {computadora}");
+
+                    if (jugador == computadora)
+                    {
+                        Console.WriteLine("¡Empate!");
+                    }
+                    else if ((jugador == "piedra" && computadora == "tijera") ||
+                             (jugador == "papel" && computadora == "piedra") ||
+                             (jugador == "tijera" && computadora == "papel"))
+                    {
+                        Console.WriteLine("¡Ganaste!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Perdiste...");
+                    }
+
+                    Console.Write("\n¿Quieres jugar otra vez? (s/n): ");
+                    string respuesta = Console.ReadLine().ToLower();
+                    if (respuesta != "s")
+                        jugarOtraVez = false;
+                }
+
+                Console.WriteLine("¡Gracias por jugar!");
+            }
+        }
+
+  
+
+
