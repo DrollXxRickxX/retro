@@ -1,0 +1,18 @@
+using System;
+
+public class Enemigo
+{
+    public string Nombre;
+    public int Vida;
+
+    public Enemigo(string nombre, int vida)
+    {
+        Nombre = nombre;
+        Vida = vida;
+    }
+
+    public virtual void Atacar()
+    {
+        Console.WriteLine(Nombre + " ataca con un golpe básico.");
+    }
+}
