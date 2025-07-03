@@ -1,0 +1,37 @@
+class Program
+{
+    static void Main(string[] args)
+    {
+        Enemigo orco = new Enemigo("Orco", 100);
+        EnemigoVolador murcielago = new EnemigoVolador("Murciélago", 50);
+        EnemigoAcuatico pez = new EnemigoAcuatico("Pez", 30);
+
+        orco.Atacar();        // Orco ataca con un golpe básico.
+        murcielago.Atacar();  // Murciélago lanza un ataque desde el aire.
+        pez.Atacar(); //pez ataca 
+    }
+}
+
+
+public class EnemigoVolador : Enemigo
+{
+    public EnemigoVolador(string nombre, int vida) : base(nombre, vida)
+    {
+    }
+
+    public override void Atacar()
+    {
+        Console.WriteLine(Nombre + " lanza un ataque desde el aire.");
+    }
+}
+public class EnemigoAcuatico : Enemigo
+{
+    public EnemigoAcuatico(string nombre, int vida) : base(nombre, vida)
+    {
+    }
+
+    public override void Atacar()
+    {
+        Console.WriteLine(Nombre + " lanza un ataque desde el agua.");
+    }
+}
