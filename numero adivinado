@@ -1,0 +1,45 @@
+
+class Program
+        {
+            static void Main()
+            {
+                Random random = new Random();
+                int numeroSecreto = random.Next(1, 101); 
+                int intento = 0;
+                int contadorIntentos = 0;
+
+                Console.WriteLine("JUEGO: ADIVINA EL NÚMERO");
+                Console.WriteLine("Estoy pensando en un número del 1 al 100.");
+                Console.WriteLine("¡Adivina cuál es!");
+
+                do
+                {
+                    Console.Write("Ingresa tu intento: ");
+                    string entrada = Console.ReadLine();
+
+                    if (!int.TryParse(entrada, out intento) || intento < 1 || intento > 100)
+                    {
+                        Console.WriteLine("Por favor, ingresa un número válido entre 1 y 100.");
+                        continue;
+                    }
+
+                    contadorIntentos++;
+
+                    if (intento < numeroSecreto)
+                    {
+                        Console.WriteLine("Demasiado bajo");
+                    }
+                    else if (intento > numeroSecreto)
+                    {
+                        Console.WriteLine("Demasiado alto");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"¡Correcto! Adivinaste el número en {contadorIntentos} intento(s).");
+                    }
+
+                } while (intento != numeroSecreto);
+
+                Console.WriteLine("¡Gracias por jugar!");
+            }
+        }
